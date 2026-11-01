@@ -1,0 +1,27 @@
+{
+  "name": "markdown-xml-outline",
+  "displayName": "Markdown XML Outline",
+  "description": "Shows Markdown headings and XML elements together in the VS Code document outline.",
+  "version": "0.0.2",
+  "publisher": "ivanwilson",
+  "license": "MIT",
+  "engines": { "vscode": "^1.95.0" },
+  "categories": ["Other"],
+  "keywords": ["markdown", "xml", "outline", "symbols", "document symbols"],
+  "activationEvents": ["onLanguage:markdown"],
+  "main": "./out/extension.js",
+  "contributes": {
+    "configuration": {
+      "title": "Markdown XML Outline",
+      "properties": {
+        "markdownXmlOutline.xmlTags": { "type": "array", "default": [], "items": { "type": "string" }, "description": "XML tags to include in the outline. Leave empty to include all XML tags." },
+        "markdownXmlOutline.excludeXmlTags": { "type": "array", "default": ["br", "hr", "img", "input", "meta", "link"], "items": { "type": "string" }, "description": "XML tags that should not appear in the outline." },
+        "markdownXmlOutline.labelAttributes": { "type": "array", "default": ["name", "id", "title", "key", "type"], "items": { "type": "string" }, "description": "Attribute names used to provide labels for XML symbols." },
+        "markdownXmlOutline.includeSelfClosingTags": { "type": "boolean", "default": true, "description": "Include self-closing XML tags in the outline." },
+        "markdownXmlOutline.showXmlAttributes": { "type": "boolean", "default": true, "description": "Show the selected XML label attribute in the Outline detail column." }
+      }
+    }
+  },
+  "scripts": { "vscode:prepublish": "npm run compile", "compile": "tsc -p ./", "watch": "tsc -watch -p ./", "test": "npm run compile && node --test tests/*.test.js" },
+  "devDependencies": { "@types/node": "^22.10.0", "@types/vscode": "^1.95.0", "typescript": "^5.7.2" }
+}
